@@ -68,8 +68,11 @@ RUN sed -Ei 's/^(bind-address|log)/#&/' /etc/mysql/mysql.conf.d/mysqld.cnf \
 VOLUME /var/lib/mysql
 
 COPY docker-entrypoint.sh /usr/local/bin/
+COPY docker-entrypoint.sh /
+RUN chmod 755 /docker-entrypoint.sh
+starting container process caused "exec: \"docker-entrypoint.sh\": executable file not found in
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 3306
 CMD ["mysqld"]
