@@ -16,7 +16,7 @@ RUN mkdir /docker-entrypoint-initdb.d
 VOLUME /var/lib/mysql
 
 COPY docker-entrypoint.sh /usr/bin/entrypoint.sh
-RUN chmod 775 +x /usr/bin/entrypoint.sh
+RUN chmod 777 /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
 
 EXPOSE 3306 33060
